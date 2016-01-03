@@ -21,7 +21,7 @@ This mathematical technique has been used across various industries and example 
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_Vx.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_SVx.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_USVx.png">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Singular Value Decomposition (SVD) Visualisation">
 <meta name="twitter:description" content="“The SVD is absolutely a high point of linear algebra” (Gilbert Strang, Kai Borre)
@@ -129,11 +129,11 @@ This mathematical technique has been used across various industries and example 
       <div class="article-entry" itemprop="articleBody">
         <p><a href="https://books.google.com.sg/books?id=MjNwWUY8jx4C&amp;pg=PA259" target="_blank" rel="external">“The SVD is absolutely a high point of linear algebra” (Gilbert Strang, Kai Borre)</a></p>
 <p>This mathematical technique has been used across various industries and example applications include <a href="http://www2.research.att.com/~volinsky/papers/ieeecomputer.pdf" target="_blank" rel="external">recommender systems (Netflix prize)</a>, <a href="http://www.iaarc.org/publications/fulltext/isarc2007-4.5_4_035.pdf" target="_blank" rel="external">face and object recognition</a>, <a href="http://www.orie.cornell.edu/engineering2/customcf/iws_events_calendar/files/Marco_Avellaneda_Presentation_10_16_14.pdf" target="_blank" rel="external">risk modelling in equity options</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/12045141" target="_blank" rel="external">identifying genes in brain imaging that make up Parkinson disease</a>. </p>
-<h2 id="Definition">Definition</h2><p>SVD is a matrix factorisation and decomposes a matrix of any size into a  product of 3 matrices:</p>
+<h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>SVD is a matrix factorisation and decomposes a matrix of any size into a  product of 3 matrices:</p>
 <p>$$ A = U S V^T $$</p>
 <p>$A$ : $n \times m$ : number of records as rows and number of dimensions/features as columns.<br>$U$ : $n \times n$ : orthogonal matrix containing eigenvectors of $AA^T$.<br>$S$ : $n \times m$ : ordered singular values in the diagonal. Square root of eigenvalues associated with $AA^T$ or $A^TA$ (its the same).<br>$V$ : $m \times m$ : orthogonal matrix containing eigenvectors of $A^TA$.</p>
 <p><em>Orthogonal matrix</em>: square matrix where columns make $90^\circ$ angles between each other and its inner dot product is zero. $Q^TQ = QQ^T = I$ and $Q^T=Q^{-1}$.<br><em>Orthonormal matrix</em>: orthogonal matrix where columns are unit vectors.</p>
-<h2 id="Example_matrix">Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
+<h2 id="Example_matrix"><a href="#Example_matrix" class="headerlink" title="Example matrix"></a>Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
 <p><img src="https://alyssaq.github.io/blog/images/eigens-transformation_matrix.png" alt="transformed_plot"></p>
 <p>Python’s numpy provides us with a handy <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html" target="_blank" rel="external"><code>svd</code></a> function:</p>
 <pre><code class="language-python">
@@ -169,9 +169,9 @@ In[5]:  np.allclose(U.T * U, np.identity(len(U)))
 Out[5]: True
 </code></pre>
 
-<h2 id="Geometric_interpretation_of_SVD">Geometric interpretation of SVD</h2><p>Transformation of a matrix by $U S V^T$ can be visualised as a <em>rotation and reflection</em>, <em>scaling</em>, <em>rotation and reflection</em>. We’ll see this as a step-by-step visualisation.</p>
-<h4 id="(1)_$V^Tx$">(1) $V^Tx$</h4><p>We can see that multiplying by $V^T$ rotates and reflects the input matrix $x$. Notice the swap of colours red-blue and green-yellow indicating a reflection along the x-axis.<br><img src="https://alyssaq.github.io/blog/images/svd_Vx.png" alt="Vx_plot"></p>
-<h4 id="(2)_$SV^Tx$">(2) $SV^Tx$</h4><p>Since $S$ only contains values on the diagonal, it simply scales the matrix. The singular values $S$ are ordered in descending order so $s_1 &gt; s_2 &gt; … &gt; s_n$. $V$ rotates the matrix to a position where the singular values now represent the scaling factor along the x and y-axis. This is now the <em>V-basis</em>.</p>
+<h2 id="Geometric_interpretation_of_SVD"><a href="#Geometric_interpretation_of_SVD" class="headerlink" title="Geometric interpretation of SVD"></a>Geometric interpretation of SVD</h2><p>Transformation of a matrix by $U S V^T$ can be visualised as a <em>rotation and reflection</em>, <em>scaling</em>, <em>rotation and reflection</em>. We’ll see this as a step-by-step visualisation.</p>
+<h4 id="281_29__24V_5ETx_24"><a href="#281_29__24V_5ETx_24" class="headerlink" title="(1) $V^Tx$"></a>(1) $V^Tx$</h4><p>We can see that multiplying by $V^T$ rotates and reflects the input matrix $x$. Notice the swap of colours red-blue and green-yellow indicating a reflection along the x-axis.<br><img src="https://alyssaq.github.io/blog/images/svd_Vx.png" alt="Vx_plot"></p>
+<h4 id="282_29__24SV_5ETx_24"><a href="#282_29__24SV_5ETx_24" class="headerlink" title="(2) $SV^Tx$"></a>(2) $SV^Tx$</h4><p>Since $S$ only contains values on the diagonal, it simply scales the matrix. The singular values $S$ are ordered in descending order so $s_1 &gt; s_2 &gt; … &gt; s_n$. $V$ rotates the matrix to a position where the singular values now represent the scaling factor along the x and y-axis. This is now the <em>V-basis</em>.</p>
 <p>The black dots shows this ($V^Tx$ is dashed and $SV^Tx$ solid):</p>
 <ul>
 <li>$V^Tx$ intercepts the x-axis at $x = -25.91$.</li>
@@ -181,15 +181,15 @@ Out[5]: True
 </ul>
 <p><img src="https://alyssaq.github.io/blog/images/svd_SVx.png" alt="SVx_plot"></p>
 <p>While not shown, there is a similar rotation and scaling effect in the <em>U-basis</em> with $Ux$ and $SUx$.</p>
-<h4 id="(3)_$USV^Tx$">(3) $USV^Tx$</h4><p>Finally, $U$ rotates and reflects the matrix back to the standard basis. As expected, this is exactly the same as $Ax$.</p>
+<h4 id="283_29__24USV_5ETx_24"><a href="#283_29__24USV_5ETx_24" class="headerlink" title="(3) $USV^Tx$"></a>(3) $USV^Tx$</h4><p>Finally, $U$ rotates and reflects the matrix back to the standard basis. As expected, this is exactly the same as $Ax$.</p>
 <p><img src="https://alyssaq.github.io/blog/images/svd_USVx.png" alt="USVx_plot"></p>
-<h2 id="Eigen_decomposition_vs_singular_value_decomposition">Eigen decomposition vs singular value decomposition</h2><p>In an eigen-decomposition, $A$ can be represented by a product of its eigenvectors $Q$ and diagonalised eigenvalues $\Lambda$:<br> $$ A = Q \Lambda Q^{-1}$$.</p>
+<h2 id="Eigen_decomposition_vs_singular_value_decomposition"><a href="#Eigen_decomposition_vs_singular_value_decomposition" class="headerlink" title="Eigen decomposition vs singular value decomposition"></a>Eigen decomposition vs singular value decomposition</h2><p>In an eigen-decomposition, $A$ can be represented by a product of its eigenvectors $Q$ and diagonalised eigenvalues $\Lambda$:<br> $$ A = Q \Lambda Q^{-1}$$.</p>
 <ul>
 <li>Unlike an eigen-decomposition where the matrix must be square ($n \times n$), SVD can decompose a matrix of any dimension.</li>
 <li>Column vectors in $Q$ are not always orthogonal so the change in basis is not a simple rotation. $U$ and $V$ are orthogonal and always represent rotations (and reflections).</li>
 <li>Singular values in $S$ are all real and non-negative. The eigenvalues in $\Lambda$ can be complex and have imaginary numbers.</li>
 </ul>
-<h2 id="Resources">Resources</h2><p>SVD ties together the core concepts of linear algebra — matrix transformations, projections, subspaces, change of basis, eigens, symmetric matrices, orthogonalisation and factorisation. For a complete proof and backgound, I highly recommend the entire <a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/" target="_blank" rel="external">MIT Linear Algebra lectures by Gilbert Strang</a>. I also found the examples and proofs for SVD and QR factorisation from the <a href="http://www.ulaff.net" target="_blank" rel="external">University of Texas’ MOOC</a> useful.</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><p>SVD ties together the core concepts of linear algebra — matrix transformations, projections, subspaces, change of basis, eigens, symmetric matrices, orthogonalisation and factorisation. For a complete proof and backgound, I highly recommend the entire <a href="http://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/" target="_blank" rel="external">MIT Linear Algebra lectures by Gilbert Strang</a>. I also found the examples and proofs for SVD and QR factorisation from the <a href="http://www.ulaff.net" target="_blank" rel="external">University of Texas’ MOOC</a> useful.</p>
 <p>Other posts covering SVD visualisations and its applications:</p>
 <ul>
 <li><a href="http://www.ams.org/samplings/feature-column/fcarc-svd" target="_blank" rel="external">http://www.ams.org/samplings/feature-column/fcarc-svd</a></li>
@@ -200,7 +200,7 @@ Out[5]: True
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/singular-value-decomposition-visualisation/" data-id="cii495r96000hleyeykh38uuw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/singular-value-decomposition-visualisation/" data-id="ciiy6mbkh000hszyezhl74hkk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -357,7 +357,7 @@ Out[5]: True
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

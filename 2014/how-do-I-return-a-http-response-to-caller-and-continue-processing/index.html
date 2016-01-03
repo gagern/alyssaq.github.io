@@ -17,7 +17,7 @@ G">
 <meta property="og:site_name" content="Alyssa">
 <meta property="og:description" content="ScenarioI have an analysis service that is invoked by posting data via its API.Since the processing could be long-running, it is best to return a response to the caller and continue with the data.  
 G">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How Do I Return a HTTP Response to Caller and Continue Processing">
 <meta name="twitter:description" content="ScenarioI have an analysis service that is invoked by posting data via its API.Since the processing could be long-running, it is best to return a response to the caller and continue with the data.  
@@ -123,14 +123,14 @@ G">
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="Scenario">Scenario</h2><p>I have an analysis service that is invoked by posting data via its API.<br>Since the processing could be long-running, it is best to return a response to the caller and continue with the data.  </p>
-<h2 id="Goal">Goal</h2><p>Return a 200 HTTP response to the caller upon receiving valid data.<br>After returning the response, continue processing the data and post the results to another endpoint.</p>
-<h2 id="Potential_solutions">Potential solutions</h2><ul>
+        <h2 id="Scenario"><a href="#Scenario" class="headerlink" title="Scenario"></a>Scenario</h2><p>I have an analysis service that is invoked by posting data via its API.<br>Since the processing could be long-running, it is best to return a response to the caller and continue with the data.  </p>
+<h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>Return a 200 HTTP response to the caller upon receiving valid data.<br>After returning the response, continue processing the data and post the results to another endpoint.</p>
+<h2 id="Potential_solutions"><a href="#Potential_solutions" class="headerlink" title="Potential solutions"></a>Potential solutions</h2><ul>
 <li>Multithreading</li>
 <li>Multiprocessing</li>
 <li>Message Queues such as <a href="http://www.celeryproject.org/" target="_blank" rel="external">celery</a>, <a href="http://python-rq.org/" target="_blank" rel="external">python-rq</a> or <a href="http://www.iron.io/mq" target="_blank" rel="external">ironMQ</a></li>
 </ul>
-<h2 id="Python_multithreading">Python multithreading</h2><p>Between <a href="#multithreading_multiprocessing">multithreading and multiprocessing</a>, using threads was sufficient for my requirements. I ended up using Python’s <a href="https://docs.python.org/2/library/threading.html" target="_blank" rel="external">threading</a> library.</p>
+<h2 id="Python_multithreading"><a href="#Python_multithreading" class="headerlink" title="Python multithreading"></a>Python multithreading</h2><p>Between <a href="#multithreading_multiprocessing">multithreading and multiprocessing</a>, using threads was sufficient for my requirements. I ended up using Python’s <a href="https://docs.python.org/2/library/threading.html" target="_blank" rel="external">threading</a> library.</p>
 <p>Below is the <a href="https://gist.github.com/alyssaq/9928442" target="_blank" rel="external">code gist</a> to handle POST requests and continue processing with threads.<br>Tested with <code>python 2.7</code> and <code>python 3.3</code> </p>
 <pre><code class="language-python">
 #!/usr/bin/env python
@@ -185,7 +185,7 @@ if __name__ == '__main__':
   bottle.run()
 </code></pre>
 
-<h2 id="Terminologies">Terminologies</h2><h3 id="multithreading_vs_multiprocessing"><a name="multithreading_multiprocessing"></a> multithreading vs multiprocessing</h3><ul>
+<h2 id="Terminologies"><a href="#Terminologies" class="headerlink" title="Terminologies"></a>Terminologies</h2><h3 id="multithreading_vs_multiprocessing"><a href="#multithreading_vs_multiprocessing" class="headerlink" title="<a name=" multithreading_multiprocessing"=""></a> multithreading vs multiprocessing"><a name="multithreading_multiprocessing"></a> multithreading vs multiprocessing</h3><ul>
 <li>A thread is the smallest sequence of instructions within a process</li>
 <li>A process is an instance of a computer program that is being executed.</li>
 </ul>
@@ -222,7 +222,7 @@ if __name__ == '__main__':
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2014/how-do-I-return-a-http-response-to-caller-and-continue-processing/" data-id="cii495ra1001nleye6uyuq324" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2014/how-do-I-return-a-http-response-to-caller-and-continue-processing/" data-id="ciiy6mbli001nszyexaei383w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/api/">api</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/multithreading/">multithreading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/queue/">queue</a></li></ul>
@@ -379,7 +379,7 @@ if __name__ == '__main__':
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

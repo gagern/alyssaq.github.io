@@ -21,7 +21,7 @@ Update: I now use MathJax to view math equations in markdown. I use dropbox to s
 How to show math equati">
 <meta property="og:image" content="https://www.dropbox.com/s/z4ng9s65ot0kcws/share-dropbox-link.png?dl=1">
 <meta property="og:image" content="https://www.dropbox.com/s/opu9yg1a6j1zdve/equation1.png?dl=1">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View Math Equations in Markdown With Dropbox Image Hosting">
 <meta name="twitter:description" content="GoalI wanted to show math equations in my github README.md
@@ -128,23 +128,23 @@ How to show math equati">
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="Goal">Goal</h2><p>I wanted to show math equations in my github README.md</p>
+        <h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>I wanted to show math equations in my github README.md</p>
 <p>Update: I now use <a href="http://scriptogr.am/alyssa/post/view-math-equations-in-markdown-with-mathjax" target="_blank" rel="external">MathJax to view math equations in markdown</a>. I use dropbox to show images in this scriptogr.am blog.</p>
-<h3 id="How_to_show_math_equations_in_the_browser">How to show math equations in the browser</h3><p>To do this, I was going to use <a href="http://www.w3.org/Math/mathml-faq.html" target="_blank" rel="external">MathML</a>, which<br>is an XML-based syntax for mathematical symbols to render in browsers.<br>Unfortunately,  markdown does <em>NOT</em> support MathML<br>☹</p>
-<h3 id="How_to_show_math_equations_in_markdown">How to show math equations in markdown</h3><p>My work around was to convert the equations into images, host them somewhere and embed them in my README.md file.</p>
+<h3 id="How_to_show_math_equations_in_the_browser"><a href="#How_to_show_math_equations_in_the_browser" class="headerlink" title="How to show math equations in the browser"></a>How to show math equations in the browser</h3><p>To do this, I was going to use <a href="http://www.w3.org/Math/mathml-faq.html" target="_blank" rel="external">MathML</a>, which<br>is an XML-based syntax for mathematical symbols to render in browsers.<br>Unfortunately,  markdown does <em>NOT</em> support MathML<br>☹</p>
+<h3 id="How_to_show_math_equations_in_markdown"><a href="#How_to_show_math_equations_in_markdown" class="headerlink" title="How to show math equations in markdown"></a>How to show math equations in markdown</h3><p>My work around was to convert the equations into images, host them somewhere and embed them in my README.md file.</p>
 <p>You will need:</p>
 <ol>
 <li>An editor that is able to render MathML equations. (I use <a href="mouapp.com">mouapp</a>)   </li>
 <li><a href="dropbox.com">Dropbox</a> or Google Drive to host your images for free. (I’ll be using dropbox)</li>
 </ol>
-<h3 id="Steps:">Steps:</h3><p>1) Copy the your MathML into your markdown editor (example below):<br>2) Take a screenshot of the rendered equation  <br><br>   (On Mac, to take an area-selected screenshot: command + shift + 4)<br>3) Place it in your dropbox folder and “Share Dropbox Link”:<br><img src="https://www.dropbox.com/s/z4ng9s65ot0kcws/share-dropbox-link.png?dl=1" alt="image"></p>
+<h3 id="Steps_3A"><a href="#Steps_3A" class="headerlink" title="Steps:"></a>Steps:</h3><p>1) Copy the your MathML into your markdown editor (example below):<br>2) Take a screenshot of the rendered equation  <br><br>   (On Mac, to take an area-selected screenshot: command + shift + 4)<br>3) Place it in your dropbox folder and “Share Dropbox Link”:<br><img src="https://www.dropbox.com/s/z4ng9s65ot0kcws/share-dropbox-link.png?dl=1" alt="image"></p>
 <p>4) Copy the link and add <strong>?dl=1</strong> at the end of the url to make it viewable when embedded in markdown:</p>
-<pre><code><span class="symbol">https:</span>/<span class="regexp">/www.dropbox.com/s</span><span class="regexp">/{guid}/equation</span>1.png?dl=<span class="number">1</span>
+<pre><code>https://www.dropbox.com/s/{guid}/equation1.png?dl=1
 </code></pre><p>5) Add it to your markdown!</p>
-<pre><code>![<span class="link_label">image</span>](<span class="link_url">https://www.dropbox.com/s/{guid}/share-dropbox-link.png?dl=1</span>)
+<pre><code>![image](https://www.dropbox.com/s/{guid}/share-dropbox-link.png?dl=1)
 </code></pre><p>To center the image in markdown, you will have to use HTML:</p>
-<pre><code><span class="tag">p</span> align=<span class="string">"center"</span>
-  <span class="tag">img</span> src=<span class="string">"https://www.dropbox.com/s/{guid}/{}.png?dl=1"</span>
+<pre><code>p align=&quot;center&quot;
+  img src=&quot;https://www.dropbox.com/s/{guid}/{}.png?dl=1&quot;
 /p
 </code></pre><p align="center"><br>  <img src="https://www.dropbox.com/s/opu9yg1a6j1zdve/equation1.png?dl=1"><br></p>
 
@@ -152,7 +152,7 @@ How to show math equati">
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2014/view-equation-in-markdown-with-dropbox-image-hosting/" data-id="cii495raf002jleye2onvvh2b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2014/view-equation-in-markdown-with-dropbox-image-hosting/" data-id="ciiy6mbly002jszye7f5cm23w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dropbox/">dropbox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li></ul>
@@ -309,7 +309,7 @@ How to show math equati">
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

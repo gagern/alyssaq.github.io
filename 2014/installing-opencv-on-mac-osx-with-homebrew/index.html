@@ -29,7 +29,7 @@ If all is well, it should be available at:
 /usr/local/Cellar/opencv/2.4.9
 
 Create a">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Installing OpenCV on Mac OSX With Homebrew">
 <meta name="twitter:description" content="Install the package manager Homebrew. It beats MacPorts any day.
@@ -144,36 +144,36 @@ Create a">
         <ol>
 <li>Install the package manager <a href="http://brew.sh/" target="_blank" rel="external">Homebrew</a>. It beats MacPorts any day.</li>
 <li><p>Go ahead and install <a href="http://opencv.org/" target="_blank" rel="external">OpenCV</a>:</p>
-<pre><code>$ <span class="keyword">brew </span>install opencv
+<pre><code>$ brew install opencv
 </code></pre></li>
 <li><p>If all is well, it should be available at:</p>
-<pre><code>/usr/local/Cellar/opencv/<span class="number">2.4</span><span class="number">.9</span>
+<pre><code>/usr/local/Cellar/opencv/2.4.9
 </code></pre></li>
 <li><p>Create a symlink to the compiled OpenCV files. If you don’t mind setting up your <code>PYTHONPATH</code> and messing up python2 and python3 support, you may use <code>brew link opencv</code>. Otherwise, I recommend doing the manual symlink to your Python 2.7 site-packages.</p>
-<pre><code><span class="variable">$ </span>sudo ln -s /usr/local/<span class="constant">Cellar</span>/opencv/<span class="number">2.4</span>.<span class="number">9</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">cv</span>.<span class="title">py</span> /<span class="title">Library</span>/<span class="title">Python</span>/2.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">cv</span>.<span class="title">py</span></span>
-<span class="variable">$ </span>sudo ln -s /usr/local/<span class="constant">Cellar</span>/opencv/<span class="number">2.4</span>.<span class="number">9</span>/<span class="class"><span class="keyword">lib</span>/<span class="title">python2</span>.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">cv2</span>.<span class="title">so</span> /<span class="title">Library</span>/<span class="title">Python</span>/2.7/<span class="title">site</span>-<span class="title">packages</span>/<span class="title">cv2</span>.<span class="title">so</span> </span>
+<pre><code>$ sudo ln -s /usr/local/Cellar/opencv/2.4.9/lib/python2.7/site-packages/cv.py /Library/Python/2.7/site-packages/cv.py
+$ sudo ln -s /usr/local/Cellar/opencv/2.4.9/lib/python2.7/site-packages/cv2.so /Library/Python/2.7/site-packages/cv2.so 
 </code></pre></li>
 <li><p>Check that it works!</p>
 <pre><code>$ ipython
-Python <span class="number">2.7</span>.<span class="number">9</span>
-[GCC <span class="number">4.2</span>.<span class="number">1</span> (Apple Inc. build <span class="number">5666</span>) (dot <span class="number">3</span>)] on darwin
-Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> ...
+Python 2.7.9
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; ...
 
-In [<span class="number">1</span>]: import cv2
-In [<span class="number">2</span>]: <span class="tag">img</span> = cv2.<span class="function"><span class="title">imread</span><span class="params">(<span class="string">'path-to-image/helloworld.jpg'</span>)</span></span>
-In [<span class="number">3</span>]: cv2.<span class="function"><span class="title">imshow</span><span class="params">(<span class="string">'Test image'</span>, img)</span></span>
+In [1]: import cv2
+In [2]: img = cv2.imread(&apos;path-to-image/helloworld.jpg&apos;)
+In [3]: cv2.imshow(&apos;Test image&apos;, img)
 </code></pre></li>
 </ol>
 <p>To check locations of site-packages folders:</p>
-<pre><code><span class="name">In</span> [<span class="number">4</span>]: <span class="atom">import</span> <span class="atom">site</span>; <span class="atom">site</span>.<span class="atom">getsitepackages</span>()
-<span class="name">Out</span>[<span class="number">4</span>]:
-[<span class="string">'/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages'</span>,
-  <span class="string">'/Library/Frameworks/Python.framework/Versions/2.7/lib/site-python'</span>,
-  <span class="string">'/Library/Python/2.7/site-packages'</span>]
+<pre><code>In [4]: import site; site.getsitepackages()
+Out[4]:
+[&apos;/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages&apos;,
+  &apos;/Library/Frameworks/Python.framework/Versions/2.7/lib/site-python&apos;,
+  &apos;/Library/Python/2.7/site-packages&apos;]
 </code></pre>
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2014/installing-opencv-on-mac-osx-with-homebrew/" data-id="cii495r9t001aleyeuo6flp3s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2014/installing-opencv-on-mac-osx-with-homebrew/" data-id="ciiy6mbl8001aszye85l3n0bf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mac/">mac</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/opencv/">opencv</a></li></ul>
@@ -330,7 +330,7 @@ In [<span class="number">3</span>]: cv2.<span class="function"><span class="titl
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

@@ -18,7 +18,7 @@ Auto testing on Ci">
 <meta property="og:description" content="GoalAutomatically run user-driven tests (BDD) with SlimerJS for testing on Gecko (firefox) and PhantomJS for WebKit (chrome/safari) on the continuous integration platform, CircleCI.
 Auto testing on Ci">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/SlimerJS-circleCI.png">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to Run SlimerJS and PhantomJS With CircleCI">
 <meta name="twitter:description" content="GoalAutomatically run user-driven tests (BDD) with SlimerJS for testing on Gecko (firefox) and PhantomJS for WebKit (chrome/safari) on the continuous integration platform, CircleCI.
@@ -124,33 +124,33 @@ Auto testing on Ci">
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <h2 id="Goal">Goal</h2><p>Automatically run user-driven tests (BDD) with <a href="http://slimerjs.org/" target="_blank" rel="external">SlimerJS</a> for testing on Gecko (firefox) and <a href="http://phantomjs.org/" target="_blank" rel="external">PhantomJS</a> for WebKit (chrome/safari) on the continuous integration platform, <a href="https://circleci.com/" target="_blank" rel="external">CircleCI</a>.</p>
-<h3 id="Auto_testing_on_CircleCI">Auto testing on CircleCI</h3><p><a href="https://circleci.com/docs/environment#browsers" target="_blank" rel="external">CircleCI’s test environment</a> is preinstalled with CasperJS and PhantomJS but does not have SlimerJS installed. To get started, all you need is a <a href="https://circleci.com/docs/configuration" target="_blank" rel="external"><code>circle.yml</code></a> file in your repository, activate it in your CircleCI account and it’ll automatically run <code>npm test</code> if you’re using NodeJS. I also use it for my Python applications.</p>
+        <h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>Automatically run user-driven tests (BDD) with <a href="http://slimerjs.org/" target="_blank" rel="external">SlimerJS</a> for testing on Gecko (firefox) and <a href="http://phantomjs.org/" target="_blank" rel="external">PhantomJS</a> for WebKit (chrome/safari) on the continuous integration platform, <a href="https://circleci.com/" target="_blank" rel="external">CircleCI</a>.</p>
+<h3 id="Auto_testing_on_CircleCI"><a href="#Auto_testing_on_CircleCI" class="headerlink" title="Auto testing on CircleCI"></a>Auto testing on CircleCI</h3><p><a href="https://circleci.com/docs/environment#browsers" target="_blank" rel="external">CircleCI’s test environment</a> is preinstalled with CasperJS and PhantomJS but does not have SlimerJS installed. To get started, all you need is a <a href="https://circleci.com/docs/configuration" target="_blank" rel="external"><code>circle.yml</code></a> file in your repository, activate it in your CircleCI account and it’ll automatically run <code>npm test</code> if you’re using NodeJS. I also use it for my Python applications.</p>
 <p>Running unit tests and just PhantomJS tests is simple and documented on their site but getting SlimerJS working took a little more Googling and trial-and-error. Heres how I set it up.</p>
-<h3 id="Custom_commands_to_use_SlimerJS_on_CircleCI">Custom commands to use SlimerJS on CircleCI</h3><p>Firstly, in the <code>circle.yml</code> file, specify custom commands  to download the SlimerJS standalone installer (currently at 0.9.1). Extract the files and move them to a known directory. Moving the files to a known directly is the key! </p>
+<h3 id="Custom_commands_to_use_SlimerJS_on_CircleCI"><a href="#Custom_commands_to_use_SlimerJS_on_CircleCI" class="headerlink" title="Custom commands to use SlimerJS on CircleCI"></a>Custom commands to use SlimerJS on CircleCI</h3><p>Firstly, in the <code>circle.yml</code> file, specify custom commands  to download the SlimerJS standalone installer (currently at 0.9.1). Extract the files and move them to a known directory. Moving the files to a known directly is the key! </p>
 <pre><code>test:
   pre:
-    - curl -k -L -o slimerjs<span class="class">.tar</span><span class="class">.bz2</span> http:<span class="comment">//download.slimerjs.org/v0.9/0.9.1/slimerjs-0.9.1-linux-x86_64.tar.bz2</span>
-    - tar -jxf slimerjs<span class="class">.tar</span><span class="class">.bz2</span>
-    - mv slimerjs-<span class="number">0.9</span>.<span class="number">1</span> <span class="variable">$HOME</span>/slimerjs
+    - curl -k -L -o slimerjs.tar.bz2 http://download.slimerjs.org/v0.9/0.9.1/slimerjs-0.9.1-linux-x86_64.tar.bz2
+    - tar -jxf slimerjs.tar.bz2
+    - mv slimerjs-0.9.1 $HOME/slimerjs
 </code></pre><p>I do this in the <code>test:pre</code> section to have SlimerJS available before running the tests.</p>
 <p>Next, add the required environment variables to CircleCI.</p>
 <pre><code>machine:
   environment:
     SLIMERJSLAUNCHER: $(which firefox)
-    PATH: <span class="variable">$PATH</span>:<span class="variable">$HOME</span>/slimerjs
+    PATH: $PATH:$HOME/slimerjs
 </code></pre><p>Just ensure that the <code>PATH</code> environment contains the same directory as where you extracted the SlimerJS files.</p>
 <p>Heres my full <code>circle.yml</code> file with auto-deployment to Heroku and a web hook to my circleCI 2 slack herokuapp with names removed.</p>
 <pre><code>machine:
       environment:
         SLIMERJSLAUNCHER: $(which firefox)
-        PATH: <span class="variable">$PATH</span>:<span class="variable">$HOME</span>/slimerjs
+        PATH: $PATH:$HOME/slimerjs
 test:
   pre:
     - bower install
-    - curl -k -L -o slimerjs.tar.bz2 http://download.slimerjs.org/v<span class="number">0</span>.<span class="number">9</span>/<span class="number">0</span>.<span class="number">9.1</span>/slimerjs-<span class="number">0</span>.<span class="number">9.1</span>-linux-x86_64.tar.bz2
+    - curl -k -L -o slimerjs.tar.bz2 http://download.slimerjs.org/v0.9/0.9.1/slimerjs-0.9.1-linux-x86_64.tar.bz2
     - tar -jxf slimerjs.tar.bz2
-    - mv slimerjs-<span class="number">0</span>.<span class="number">9.1</span> <span class="variable">$HOME</span>/slimerjs
+    - mv slimerjs-0.9.1 $HOME/slimerjs
 deployment:
   production:
     branch: master
@@ -167,7 +167,7 @@ notify:
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2014/how-to-run-slimerjs-and-phantomjs-with-circleci/" data-id="cii495r9w001gleyeniigtv2r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2014/how-to-run-slimerjs-and-phantomjs-with-circleci/" data-id="ciiy6mblc001gszye2h3snk9v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
@@ -324,7 +324,7 @@ notify:
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

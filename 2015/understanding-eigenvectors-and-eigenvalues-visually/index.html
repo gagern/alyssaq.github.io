@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/eigens-transformation_matrix.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/eigens-eigenvector_plot.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/eigens-full_plot.png">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Understanding Eigenvectors and Eigenvalues Visually">
 <meta name="twitter:description" content="Eigenvectors and eigenvalues are used in many engineering problems and have applications in object recognition, edge detection in diffusion MRI images, moments of inertia in motor calculations, bridge">
@@ -125,12 +125,12 @@
       <div class="article-entry" itemprop="articleBody">
         <p>Eigenvectors and eigenvalues are used in many engineering problems and have applications in <a href="http://www.cipa.dcu.ie/papers/spie_97.pdf" target="_blank" rel="external">object recognition</a>, <a href="http://cg.cs.uni-bonn.de/fileadmin/Downloads/schultz/papers/schultz-evalder-2008.pdf" target="_blank" rel="external">edge detection in diffusion MRI images</a>, <a href="http://www2.eng.cam.ac.uk/~hemh/gyroscopes/momentinertia.html" target="_blank" rel="external">moments of inertia</a> in motor calculations, <a href="http://www.ma.utexas.edu/mp_arc/c/13/13-25.pdf" target="_blank" rel="external">bridge modelling</a>, <a href="http://www.rose-hulman.edu/~bryan/googleFinalVersionFixed.pdf" target="_blank" rel="external">Google’s PageRank algorithm</a> and more on <a href="http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#Applications" target="_blank" rel="external">wikipedia</a>.</p>
 <p>Previously, I wrote about <a href="http://scriptogr.am/alyssa/post/visualising-matrices-and-affine-transformations-with-python" target="_blank" rel="external">visualising matrices and affine transformations</a>. Here, we build on top of that and understand eigenvectors and eigenvalues visually.</p>
-<h2 id="Interpreting_eigens">Interpreting eigens</h2><p>Quick recap, a non-zero matrix $x$ can be transformed by multiplying it with a $n \times n$ square matrix, $A$. So, the transformed matrix can be represented by the equation:<br>$$ T(x) = Ax $$</p>
+<h2 id="Interpreting_eigens"><a href="#Interpreting_eigens" class="headerlink" title="Interpreting eigens"></a>Interpreting eigens</h2><p>Quick recap, a non-zero matrix $x$ can be transformed by multiplying it with a $n \times n$ square matrix, $A$. So, the transformed matrix can be represented by the equation:<br>$$ T(x) = Ax $$</p>
 <p>$x$ is called an <strong>eigenvector</strong> that when multiplied with $A$, yields a scalar value, $\lambda$, called the <strong>eigenvalue</strong>. The basic equation is:<br>$$ Ax = \lambda x $$</p>
 <p>Any vector $v$ on the line made from the points passing through the origin $(0,0)$ and an eigenvector are all eigenvectors. Transforming $v$ by multiplying it by the transformation matrix $A$ or its associated eigenvalue $\lambda$ will result in the same vector. This will make more sense with the visuals in the following sections.</p>
 <p>Most libraries (including numpy) will return eigenvectors that have been scaled to have a length of 1 (called <em>unit vectors</em>).</p>
 <p>Eigenvalue $\lambda$ tells us how much $x$ is scaled, stretched, shrunk, reversed or untouched when multiplied by $A$. The number of eigenvalues is at most the number of dimensions, $n$. So, a set of 2D vectors will have at most 2 eigenvalues and corresponding eigenvectors.</p>
-<h2 id="Calculating_eigenvalues,_eigenvectors">Calculating eigenvalues, eigenvectors</h2><p>Eigenvalue $\lambda$ and its corresponding eigenvector is found by solving the equation: $$det(\lambda I - A) = 0$$</p>
+<h2 id="Calculating_eigenvalues_2C_eigenvectors"><a href="#Calculating_eigenvalues_2C_eigenvectors" class="headerlink" title="Calculating eigenvalues, eigenvectors"></a>Calculating eigenvalues, eigenvectors</h2><p>Eigenvalue $\lambda$ and its corresponding eigenvector is found by solving the equation: $$det(\lambda I - A) = 0$$</p>
 <p><strong>What does determinant zero mean?</strong><br>Heres a nice <a href="http://www.math.harvard.edu/~elkies/M21b.08/det.html" target="_blank" rel="external">factsheet of determinant properties</a>. If the $det(M) = 0$, $M$ is not invertible (columns cannot be swapped) and the rows and columns of $M$ are linearly dependent (one of the vectors in the set can be represented by the others. E.g {[2, 3], [4, 6]} are dependent as the second vector is a scaled version of the first vector in the set.)</p>
 <p>You should watch Khan Academy’s <a href="https://www.khanacademy.org/math/linear-algebra/alternate_bases/eigen_everything/v/linear-algebra-example-solving-for-the-eigenvalues-of-a-2x2-matrix" target="_blank" rel="external">example solving eigenvalues</a> and the entire <em>Eigen-eveything</em> series if you want a step-by-step calculation and cement the maths. I also found these resources useful: </p>
 <ul>
@@ -138,7 +138,7 @@
 <li><a href="http://math.mit.edu/~gs/linearalgebra/ila0601.pdf" target="_blank" rel="external">Introduction to Linear Algebra, 4th ed, Chapter 6</a>.</li>
 <li><a href="https://www.youtube.com/watch?v=lXNXrLcoerU" target="_blank" rel="external">Prof Gilbert Strang’s Eigenvalues and Eigenvectors lecture at MIT</a></li>
 </ul>
-<h2 id="Eigens_of_a_scaling_transformation_matrix">Eigens of a scaling transformation matrix</h2><p>Lets start with a simple transformation matrix, $A = \begin{bmatrix}<br>2 &amp; 0 \\<br>0 &amp; 3<br>\end{bmatrix}$.  </p>
+<h2 id="Eigens_of_a_scaling_transformation_matrix"><a href="#Eigens_of_a_scaling_transformation_matrix" class="headerlink" title="Eigens of a scaling transformation matrix"></a>Eigens of a scaling transformation matrix</h2><p>Lets start with a simple transformation matrix, $A = \begin{bmatrix}<br>2 &amp; 0 \\<br>0 &amp; 3<br>\end{bmatrix}$.  </p>
 <pre><code class="language-python">
 In [1]: A = np.matrix([[2, 0], [0, 3]])
 In [2]: evals, evecs = np.linalg.eig(A)
@@ -150,7 +150,7 @@ Out[2]: evals:  [ 2.  3.]
 
 <p>The first eigenvalue, 2, is associated with the eigenvector in the first column (1, 0). Equation of the line through $(0,0)$ and $(1,0)$ is $y = 0$. So, any point on this line when multiplied by the transformation matrix $A$, will be scaled by 2.</p>
 <p>Similarly, for the second eigenvalue, any point on the line $x = 0$ will be scaled by 3.</p>
-<h2 id="Visualising_eigenvalues_and_eigenvectors">Visualising eigenvalues and eigenvectors</h2><p>Lets use a more involved transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$.</p>
+<h2 id="Visualising_eigenvalues_and_eigenvectors"><a href="#Visualising_eigenvalues_and_eigenvectors" class="headerlink" title="Visualising eigenvalues and eigenvectors"></a>Visualising eigenvalues and eigenvectors</h2><p>Lets use a more involved transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$.</p>
 <p>For visualisation, we’ll plot a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and its transformed state after it has been multiplied with $A$.</p>
 <p><img src="https://alyssaq.github.io/blog/images/eigens-transformation_matrix.png" alt="transformed_plot"></p>
 <p>The dashed square shows the original matrix $x$ and the transformed matrix $Ax$. Now we’ll see where the eigens come into play.</p>
@@ -179,7 +179,7 @@ Out [2]: m1 = -0.936, m2 = 1.603  # Round to 3dp
 <p>$$ \begin{equation}<br>\begin{aligned}<br>A \times p1 \ &amp;=<br>\begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix} &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;= \begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\lambda \times p1 \ &amp;=<br>0.719 &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;=<br>\begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\end{aligned}<br>\end{equation} \\<br>\therefore Ax = \lambda x $$    </p>
 <p>Doing this for $e2$ will show the same calculation. As this eigenvector is associated with the largest eigenvalue of 1.481, this is the maximum possible stretch when acted by the transformation matrix. </p>
 <p>To complete the visuals, we’ll plot $p1$ (the intercept with $e1$), $p2$ (the intercept with $e2$) and their transformed point $T(p1)$ and $T(p2)$.<br><a href="https://gist.github.com/alyssaq/f56ba93b4d3b3be76943" target="_blank" rel="external"><i class="fa fa-github-alt"></i> Gist for the full plot</a><br><img src="https://alyssaq.github.io/blog/images/eigens-full_plot.png" alt="full_plot"></p>
-<h2 id="Eigendecomposition"><a href="#eigendecomposition">Eigendecomposition</a></h2><p>We can rearrange $Ax = \lambda x$ to represent $A$ as a product of its eigenvectors and eigenvalues by diagonalising the eigenvalues:<br>$$A = Q \Lambda Q^{-1}$$<br>with $Q$ as the eigenvectors and $\Lambda$ as the diagonalised eigenvalues. Using the values from the example above:</p>
+<h2 id="Eigendecomposition"><a href="#Eigendecomposition" class="headerlink" title="<a href=" #eigendecomposition"="">Eigendecomposition</a>"><a href="#eigendecomposition">Eigendecomposition</a></h2><p>We can rearrange $Ax = \lambda x$ to represent $A$ as a product of its eigenvectors and eigenvalues by diagonalising the eigenvalues:<br>$$A = Q \Lambda Q^{-1}$$<br>with $Q$ as the eigenvectors and $\Lambda$ as the diagonalised eigenvalues. Using the values from the example above:</p>
 <p>$$ \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix} =<br>\begin{bmatrix}<br>-0.730 &amp; -0.529 \\<br>0.683 &amp; -0.848<br>\end{bmatrix}<br>\begin{bmatrix}<br>0.719 &amp; 0 \\<br>0 &amp; 1.481<br>\end{bmatrix}<br>\begin{bmatrix}<br>-0.730 &amp; -0.529 \\<br>0.683 &amp; -0.848<br>\end{bmatrix}^{-1} $$</p>
 <p>To check this in Python:</p>
 <pre><code class="language-python">
@@ -193,7 +193,7 @@ Out[3]: True
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually/" data-id="cii495r9g000uleyebck75hy1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually/" data-id="ciiy6mbkq000uszyer0bf3fv4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
@@ -350,7 +350,7 @@ Out[3]: True
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>

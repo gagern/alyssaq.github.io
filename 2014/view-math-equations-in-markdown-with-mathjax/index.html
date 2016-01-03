@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Alyssa">
 <meta property="og:description" content="MaxJax is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. 
 1) Add the MathJax script from cdn into your HTML. I use the TeX syntax">
-<meta property="og:updated_time" content="2015-12-13T08:11:06.000Z">
+<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View Math Equations in Markdown With MathJax">
 <meta name="twitter:description" content="MaxJax is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. 
@@ -125,27 +125,27 @@
       <div class="article-entry" itemprop="articleBody">
         <p><a href="http://docs.mathjax.org/en/latest/mathjax.html" target="_blank" rel="external">MaxJax</a> is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. </p>
 <p>1) Add the MathJax script from cdn into your HTML. I use the TeX syntax but you can also use mathML by including it in the config parameter. (For scriptogr.am, its under tools &gt; HTML editor).</p>
-<pre><code><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;
 </code></pre><p>2) Change the default inline math delimiters of <code>\(...\)</code> as the brackets mean something else in markdown.</p>
-<pre><code>&lt;<span class="atom">script</span> <span class="atom">type</span>=<span class="string">"text/x-mathjax-config"</span>&gt;
-  <span class="name">MathJax</span>.<span class="name">Hub</span>.<span class="name">Config</span>({
-    <span class="atom">extensions</span>: [<span class="string">"tex2jax.js"</span>],
-    <span class="atom">jax</span>: [<span class="string">"input/TeX"</span>, <span class="string">"output/HTML-CSS"</span>],
-    <span class="atom">tex2jax</span>: {
-      <span class="atom">inlineMath</span>: [ [<span class="string">'$'</span>,<span class="string">'$'</span>]],
-      <span class="atom">displayMath</span>: [ [<span class="string">'$$'</span>,<span class="string">'$$'</span>]],
-      <span class="atom">processEscapes</span>: <span class="atom">true</span>
+<pre><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
+  MathJax.Hub.Config({
+    extensions: [&quot;tex2jax.js&quot;],
+    jax: [&quot;input/TeX&quot;, &quot;output/HTML-CSS&quot;],
+    tex2jax: {
+      inlineMath: [ [&apos;$&apos;,&apos;$&apos;]],
+      displayMath: [ [&apos;$$&apos;,&apos;$$&apos;]],
+      processEscapes: true
     },
-    <span class="string">"HTML-CSS"</span>: { <span class="atom">availableFonts</span>: [<span class="string">"TeX"</span>] }
+    &quot;HTML-CSS&quot;: { availableFonts: [&quot;TeX&quot;] }
   });
-&lt;/<span class="atom">script</span>&gt;
+&lt;/script&gt;
 </code></pre><p>So, <code>$$ y = mx + b $$</code> appears on a new line:<br>$$ y = mx + b $$</p>
 <p>and <code>$y= mx + b$</code> appears inline: $y = mx + b$</p>
 <p>3) Enjoy math scripting with TeX!<br>Here are some <a href="http://www.mathjax.org/demos/tex-samples/" target="_blank" rel="external">TeX samples</a></p>
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2014/view-math-equations-in-markdown-with-mathjax/" data-id="cii495rac002cleyeqfb6kqnj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2014/view-math-equations-in-markdown-with-mathjax/" data-id="ciiy6mblu002cszyek6t1e3oj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/math/">math</a></li></ul>
@@ -302,7 +302,7 @@
         <h1 class="logo-wrap">
           <a href="/" class="logo"></a>
         </h1>
-        <p>&copy; 2015 Alyssa Quek</p>
+        <p>&copy; 2016 Alyssa Quek</p>
         <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
       </div>
     </div>
