@@ -579,7 +579,7 @@ translated_matrix = A*P
     <link href="alyssaq.github.io/2014/understanding-hough-transform/"/>
     <id>alyssaq.github.io/2014/understanding-hough-transform/</id>
     <published>2014-12-14T10:18:00.000Z</published>
-    <updated>2016-02-11T04:06:44.000Z</updated>
+    <updated>2016-02-11T04:07:55.000Z</updated>
     <content type="html"><![CDATA[<p>The Hough transform <a href="http://www.ai.sri.com/pubs/files/tn036-duda71.pdf" target="_blank" rel="external">(Duda and Hart, 1972)</a>, which started out as a technique to detect lines in image, has been generalised and extended to detect curves in 2D and 3D.</p>
 <p>Here, we understand how an image is transformed into the hough space for line detection and implement it in Python.</p>
 <h2 id="How_it_works_-_gradient-intercept_parameter_space"><a href="#How_it_works_-_gradient-intercept_parameter_space" class="headerlink" title="How it works - gradient-intercept parameter space"></a>How it works - gradient-intercept parameter space</h2><p>A line in Cartesian form has the equation:<br><img src="https://alyssaq.github.io/blog/images/hough-cartesian_equation.png" style="float:right"></p>
