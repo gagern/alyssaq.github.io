@@ -122,14 +122,14 @@ deployment:
     <link href="alyssaq.github.io/2015/singular-value-decomposition-visualisation/"/>
     <id>alyssaq.github.io/2015/singular-value-decomposition-visualisation/</id>
     <published>2015-02-23T19:03:00.000Z</published>
-    <updated>2015-12-13T08:28:52.000Z</updated>
+    <updated>2016-03-23T06:29:08.000Z</updated>
     <content type="html"><![CDATA[<p><a href="https://books.google.com.sg/books?id=MjNwWUY8jx4C&amp;pg=PA259" target="_blank" rel="external">“The SVD is absolutely a high point of linear algebra” (Gilbert Strang, Kai Borre)</a></p>
-<p>This mathematical technique has been used across various industries and example applications include <a href="http://www2.research.att.com/~volinsky/papers/ieeecomputer.pdf" target="_blank" rel="external">recommender systems (Netflix prize)</a>, <a href="http://www.iaarc.org/publications/fulltext/isarc2007-4.5_4_035.pdf" target="_blank" rel="external">face and object recognition</a>, <a href="http://www.orie.cornell.edu/engineering2/customcf/iws_events_calendar/files/Marco_Avellaneda_Presentation_10_16_14.pdf" target="_blank" rel="external">risk modelling in equity options</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/12045141" target="_blank" rel="external">identifying genes in brain imaging that make up Parkinson disease</a>. </p>
+<p>This mathematical technique has been used across various industries and example applications include <a href="http://www2.research.att.com/~volinsky/papers/ieeecomputer.pdf" target="_blank" rel="external">recommender systems (Netflix prize)</a>, <a href="http://www.iaarc.org/publications/fulltext/isarc2007-4.5_4_035.pdf" target="_blank" rel="external">face and object recognition</a>, <a href="http://www.orie.cornell.edu/engineering2/customcf/iws_events_calendar/files/Marco_Avellaneda_Presentation_10_16_14.pdf" target="_blank" rel="external">risk modelling in equity options</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/12045141" target="_blank" rel="external">identifying genes in brain imaging that make up Parkinson disease</a>.</p>
 <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>SVD is a matrix factorisation and decomposes a matrix of any size into a  product of 3 matrices:</p>
 <p>$$ A = U S V^T $$</p>
 <p>$A$ : $n \times m$ : number of records as rows and number of dimensions/features as columns.<br>$U$ : $n \times n$ : orthogonal matrix containing eigenvectors of $AA^T$.<br>$S$ : $n \times m$ : ordered singular values in the diagonal. Square root of eigenvalues associated with $AA^T$ or $A^TA$ (its the same).<br>$V$ : $m \times m$ : orthogonal matrix containing eigenvectors of $A^TA$.</p>
 <p><em>Orthogonal matrix</em>: square matrix where columns make $90^\circ$ angles between each other and its inner dot product is zero. $Q^TQ = QQ^T = I$ and $Q^T=Q^{-1}$.<br><em>Orthonormal matrix</em>: orthogonal matrix where columns are unit vectors.</p>
-<h2 id="Example_matrix"><a href="#Example_matrix" class="headerlink" title="Example matrix"></a>Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
+<h2 id="Example_matrix"><a href="#Example_matrix" class="headerlink" title="Example matrix"></a>Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="https://alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
 <p><img src="https://alyssaq.github.io/blog/images/eigens-transformation_matrix.png" alt="transformed_plot"></p>
 <p>Python’s numpy provides us with a handy <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html" target="_blank" rel="external"><code>svd</code></a> function:</p>
 <pre><code class="language-python">
@@ -213,13 +213,13 @@ Out[5]: True
     <link href="alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/"/>
     <id>alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/</id>
     <published>2015-01-13T19:30:00.000Z</published>
-    <updated>2015-12-13T08:28:52.000Z</updated>
+    <updated>2016-03-23T06:28:49.000Z</updated>
     <content type="html"><![CDATA[<h4 id="How_do_we_find_the_major_and_minor_axes_of_a_blob_3F"><a href="#How_do_we_find_the_major_and_minor_axes_of_a_blob_3F" class="headerlink" title="How do we find the major and minor axes of a blob?"></a>How do we find the major and minor axes of a blob?</h4><p>We look at using 2 popular methods to obtain the same result:</p>
 <ol>
 <li>Covariance matrix and eigenvectors, eigenvalues (partial PCA).</li>
 <li>Raw image moments</li>
 </ol>
-<h2 id="1-_Covariance_matrix_and_eigens"><a href="#1-_Covariance_matrix_and_eigens" class="headerlink" title="1. Covariance matrix and eigens"></a>1. Covariance matrix and eigens</h2><p>An <strong>eigenvalue</strong> tells us the scaling magnitude along the direction of its corresponding <strong>eigenvector</strong>. Check my post on <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">understanding eigens</a> for the visual intuition. </p>
+<h2 id="1-_Covariance_matrix_and_eigens"><a href="#1-_Covariance_matrix_and_eigens" class="headerlink" title="1. Covariance matrix and eigens"></a>1. Covariance matrix and eigens</h2><p>An <strong>eigenvalue</strong> tells us the scaling magnitude along the direction of its corresponding <strong>eigenvector</strong>. Check my post on <a href="https://alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually">understanding eigens</a> for the visual intuition.</p>
 <p><a href="http://mathworld.wolfram.com/CovarianceMatrix.html" target="_blank" rel="external"><strong>Covariance matrix</strong></a> is a square and symmetric matrix that summarises the variance between two variables. So, with a set of $(x, y)$ points, the covariance matrix is 2x2:<br>$ C = \begin{bmatrix}<br>variance(x,x) &amp; variance(x,y) \\<br>variance(x,y) &amp; variance(y,y)<br>\end{bmatrix}$, where the variance of $(x, y)$ and $(y, x)$ are the same.</p>
 <p><strong>Principal component analysis (PCA)</strong> is a method commonly used for dimensionality reduction. The eigenvectors of the covariance matrix are called <strong>principal components</strong>. Heres a thorough <a href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf" target="_blank" rel="external">tutorial on PCA and applied to computer vision (Lindsay Smith, 2002)</a>.</p>
 <p><strong>Eigenvectors with the largest eigenvalue of a covariance matrix</strong> gives us the direction along which the data has the largest variance.</p>
@@ -273,9 +273,9 @@ x_v2, y_v2 = evec2
 <p><strong>6) Plot the principal components.</strong> The larger eigenvector is plotted in red and drawn twice as long as the smaller eigenvector in blue.</p>
 <pre><code class="language-python">
 scale = 20
-plt.plot([x_v1*-scale*2, x_v1*scale*2], 
+plt.plot([x_v1*-scale*2, x_v1*scale*2],
          [y_v1*-scale*2, y_v1*scale*2], color='red')
-plt.plot([x_v2*-scale, x_v2*scale], 
+plt.plot([x_v2*-scale, x_v2*scale],
          [y_v2*-scale, y_v2*scale], color='blue')
 plt.plot(x, y, 'k.')
 plt.axis('equal')
@@ -285,14 +285,14 @@ plt.show()
 
 <p style="text-align:center"><br><img src="https://alyssaq.github.io/blog/images/blob_axes-eigens_plot.png"><br></p>
 
-<p><strong>7) Bonus!</strong> We vertically-align the blob based on the major axis via a linear transformation. An <a href="scriptogr.am/alyssa/post/visualising-matrices-and-affine-transformations-with-python#rotating">anti-clockwise rotating transformation matrix</a> has the general form: $\begin{bmatrix}<br>cos \theta &amp; -sin \theta \\<br>sin \theta &amp; cos \theta<br>\end{bmatrix}$.</p>
+<p><strong>7) Bonus!</strong> We vertically-align the blob based on the major axis via a linear transformation. An <a href="https://alyssaq.github.io/2015/visualising-matrices-and-affine-transformations-with-python#rotating">anti-clockwise rotating transformation matrix</a> has the general form: $\begin{bmatrix}<br>cos \theta &amp; -sin \theta \\<br>sin \theta &amp; cos \theta<br>\end{bmatrix}$.</p>
 <p>To do this:</p>
 <ol>
 <li>Calculate $\theta$ using the eigenvector of the major axis to the y-axis</li>
 <li>Create the rotating transformation matrix</li>
 <li>Multiply the transformation matrix to the set of coordinates.<pre><code class="language-python">
 theta = np.tanh((x_v1)/(y_v1))  
-rotation_mat = np.matrix([[np.cos(theta), -np.sin(theta)], 
+rotation_mat = np.matrix([[np.cos(theta), -np.sin(theta)],
                       [np.sin(theta), np.cos(theta)]])
 transformed_mat = rotation_mat * coords
 # plot the transformed blob
@@ -306,7 +306,7 @@ plt.plot(x_points, y_points, 'g.')
 <p style="text-align:center"><br><img src="https://alyssaq.github.io/blog/images/blob_axes-transformed_plot.png"><br></p>
 
 <h2 id="2-_Raw_image_moments"><a href="#2-_Raw_image_moments" class="headerlink" title="2. Raw image moments"></a>2. Raw image moments</h2><p>We can obtain the same axes and orientation of a blob with <a href="http://en.wikipedia.org/wiki/Image_moment#Raw_moments" target="_blank" rel="external">raw image moments and central moments</a>. Special thanks to this <a href="http://stackoverflow.com/questions/9005659/compute-eigenvectors-of-image-in-python" target="_blank" rel="external">stack overflow answer</a>.</p>
-<p>The calculation of a raw image moment is given by the equation: </p>
+<p>The calculation of a raw image moment is given by the equation:</p>
 <span>$$\begin{aligned}
 M_{ij}  = \sum\limits_{y=0}^{nrows}\sum\limits_{x=0}^{ncols} x^i \ y^j \ I(x, y)
 \end{aligned}$$</span><!-- Has MathJax -->
@@ -373,9 +373,9 @@ evals, evecs = np.linalg.eig(cov)
     <link href="alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually/"/>
     <id>alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually/</id>
     <published>2015-01-07T07:30:00.000Z</published>
-    <updated>2015-12-13T08:28:52.000Z</updated>
+    <updated>2016-03-23T06:27:54.000Z</updated>
     <content type="html"><![CDATA[<p>Eigenvectors and eigenvalues are used in many engineering problems and have applications in <a href="http://www.cipa.dcu.ie/papers/spie_97.pdf" target="_blank" rel="external">object recognition</a>, <a href="http://cg.cs.uni-bonn.de/fileadmin/Downloads/schultz/papers/schultz-evalder-2008.pdf" target="_blank" rel="external">edge detection in diffusion MRI images</a>, <a href="http://www2.eng.cam.ac.uk/~hemh/gyroscopes/momentinertia.html" target="_blank" rel="external">moments of inertia</a> in motor calculations, <a href="http://www.ma.utexas.edu/mp_arc/c/13/13-25.pdf" target="_blank" rel="external">bridge modelling</a>, <a href="http://www.rose-hulman.edu/~bryan/googleFinalVersionFixed.pdf" target="_blank" rel="external">Google’s PageRank algorithm</a> and more on <a href="http://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors#Applications" target="_blank" rel="external">wikipedia</a>.</p>
-<p>Previously, I wrote about <a href="http://scriptogr.am/alyssa/post/visualising-matrices-and-affine-transformations-with-python" target="_blank" rel="external">visualising matrices and affine transformations</a>. Here, we build on top of that and understand eigenvectors and eigenvalues visually.</p>
+<p>Previously, I wrote about <a href="https://alyssaq.github.io/2015/visualising-matrices-and-affine-transformations-with-python">visualising matrices and affine transformations</a>. Here, we build on top of that and understand eigenvectors and eigenvalues visually.</p>
 <h2 id="Interpreting_eigens"><a href="#Interpreting_eigens" class="headerlink" title="Interpreting eigens"></a>Interpreting eigens</h2><p>Quick recap, a non-zero matrix $x$ can be transformed by multiplying it with a $n \times n$ square matrix, $A$. So, the transformed matrix can be represented by the equation:<br>$$ T(x) = Ax $$</p>
 <p>$x$ is called an <strong>eigenvector</strong> that when multiplied with $A$, yields a scalar value, $\lambda$, called the <strong>eigenvalue</strong>. The basic equation is:<br>$$ Ax = \lambda x $$</p>
 <p>Any vector $v$ on the line made from the points passing through the origin $(0,0)$ and an eigenvector are all eigenvectors. Transforming $v$ by multiplying it by the transformation matrix $A$ or its associated eigenvalue $\lambda$ will result in the same vector. This will make more sense with the visuals in the following sections.</p>
@@ -383,7 +383,7 @@ evals, evecs = np.linalg.eig(cov)
 <p>Eigenvalue $\lambda$ tells us how much $x$ is scaled, stretched, shrunk, reversed or untouched when multiplied by $A$. The number of eigenvalues is at most the number of dimensions, $n$. So, a set of 2D vectors will have at most 2 eigenvalues and corresponding eigenvectors.</p>
 <h2 id="Calculating_eigenvalues_2C_eigenvectors"><a href="#Calculating_eigenvalues_2C_eigenvectors" class="headerlink" title="Calculating eigenvalues, eigenvectors"></a>Calculating eigenvalues, eigenvectors</h2><p>Eigenvalue $\lambda$ and its corresponding eigenvector is found by solving the equation: $$det(\lambda I - A) = 0$$</p>
 <p><strong>What does determinant zero mean?</strong><br>Heres a nice <a href="http://www.math.harvard.edu/~elkies/M21b.08/det.html" target="_blank" rel="external">factsheet of determinant properties</a>. If the $det(M) = 0$, $M$ is not invertible (columns cannot be swapped) and the rows and columns of $M$ are linearly dependent (one of the vectors in the set can be represented by the others. E.g {[2, 3], [4, 6]} are dependent as the second vector is a scaled version of the first vector in the set.)</p>
-<p>You should watch Khan Academy’s <a href="https://www.khanacademy.org/math/linear-algebra/alternate_bases/eigen_everything/v/linear-algebra-example-solving-for-the-eigenvalues-of-a-2x2-matrix" target="_blank" rel="external">example solving eigenvalues</a> and the entire <em>Eigen-eveything</em> series if you want a step-by-step calculation and cement the maths. I also found these resources useful: </p>
+<p>You should watch Khan Academy’s <a href="https://www.khanacademy.org/math/linear-algebra/alternate_bases/eigen_everything/v/linear-algebra-example-solving-for-the-eigenvalues-of-a-2x2-matrix" target="_blank" rel="external">example solving eigenvalues</a> and the entire <em>Eigen-eveything</em> series if you want a step-by-step calculation and cement the maths. I also found these resources useful:</p>
 <ul>
 <li><a href="http://www.math.msu.edu/~shapiro/Teaching/classes/311UH_05/Eigenvalues.pdf" target="_blank" rel="external">Coordinates, Eigenvalues, and Eigenvectors (Michigan State University)</a></li>
 <li><a href="http://math.mit.edu/~gs/linearalgebra/ila0601.pdf" target="_blank" rel="external">Introduction to Linear Algebra, 4th ed, Chapter 6</a>.</li>
@@ -411,7 +411,7 @@ In [2]: evals, evecs = np.linalg.eig(A)
 
 Out[2]: evals:  [ 0.71921134  1.48078866]
         evecs: [[-0.73009717 -0.52937334]
-                 [ 0.68334334 -0.84838898]] 
+                 [ 0.68334334 -0.84838898]]
 </code></pre>
 
 <p>To plot the eigenvectors, we calculate the gradient:</p>
@@ -419,7 +419,7 @@ Out[2]: evals:  [ 0.71921134  1.48078866]
 In [1]: x_v1, y_v1 = evecs[:,0].getA1()
         x_v2, y_v2 = evecs[:,1].getA1()
 In [2]: m1 = y_v1/x_v1 # Gradient of 1st eigenvector
-        m2 = y_v2/x_v2 # Gradient of 2nd eigenvector    
+        m2 = y_v2/x_v2 # Gradient of 2nd eigenvector
 
 Out [2]: m1 = -0.936, m2 = 1.603  # Round to 3dp
 </code></pre>
@@ -427,8 +427,8 @@ Out [2]: m1 = -0.936, m2 = 1.603  # Round to 3dp
 <p>So, our eigenvectors, which span all vectors along the line through the origin, have the equations: $y = -0.936x$ ($e1$) and $y = 1.603x$ ($e2$). This is plotted in blue and red below.</p>
 <p><img src="https://alyssaq.github.io/blog/images/eigens-eigenvector_plot.png" alt="eigenvectors_plot"></p>
 <p><strong>What does this eigen plot tell us?</strong><br>The point where the first eigenvector line $e1$ intercepts the original matrix is $p1 = (10.68, -10)$. Multiplying this point by the corresponding eigenvalue of 0.719 OR by the transformation matrix $A$, yields $T(p1) = (7.684, -7.192)$.</p>
-<p>$$ \begin{equation}<br>\begin{aligned}<br>A \times p1 \ &amp;=<br>\begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix} &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;= \begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\lambda \times p1 \ &amp;=<br>0.719 &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;=<br>\begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\end{aligned}<br>\end{equation} \\<br>\therefore Ax = \lambda x $$    </p>
-<p>Doing this for $e2$ will show the same calculation. As this eigenvector is associated with the largest eigenvalue of 1.481, this is the maximum possible stretch when acted by the transformation matrix. </p>
+<p>$$ \begin{equation}<br>\begin{aligned}<br>A \times p1 \ &amp;=<br>\begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix} &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;= \begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\lambda \times p1 \ &amp;=<br>0.719 &amp; \times \begin{bmatrix}<br>10.68 \\<br>-10<br>\end{bmatrix} &amp;=<br>\begin{bmatrix}<br>7.684 \\<br>-7.192<br>\end{bmatrix} \\<br>\end{aligned}<br>\end{equation} \\<br>\therefore Ax = \lambda x $$</p>
+<p>Doing this for $e2$ will show the same calculation. As this eigenvector is associated with the largest eigenvalue of 1.481, this is the maximum possible stretch when acted by the transformation matrix.</p>
 <p>To complete the visuals, we’ll plot $p1$ (the intercept with $e1$), $p2$ (the intercept with $e2$) and their transformed point $T(p1)$ and $T(p2)$.<br><a href="https://gist.github.com/alyssaq/f56ba93b4d3b3be76943" target="_blank" rel="external"><i class="fa fa-github-alt"></i> Gist for the full plot</a><br><img src="https://alyssaq.github.io/blog/images/eigens-full_plot.png" alt="full_plot"></p>
 <h2 id="Eigendecomposition"><a href="#Eigendecomposition" class="headerlink" title="<a href=" #eigendecomposition"="">Eigendecomposition</a>"><a href="#eigendecomposition">Eigendecomposition</a></h2><p>We can rearrange $Ax = \lambda x$ to represent $A$ as a product of its eigenvectors and eigenvalues by diagonalising the eigenvalues:<br>$$A = Q \Lambda Q^{-1}$$<br>with $Q$ as the eigenvectors and $\Lambda$ as the diagonalised eigenvalues. Using the values from the example above:</p>
 <p>$$ \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix} =<br>\begin{bmatrix}<br>-0.730 &amp; -0.529 \\<br>0.683 &amp; -0.848<br>\end{bmatrix}<br>\begin{bmatrix}<br>0.719 &amp; 0 \\<br>0 &amp; 1.481<br>\end{bmatrix}<br>\begin{bmatrix}<br>-0.730 &amp; -0.529 \\<br>0.683 &amp; -0.848<br>\end{bmatrix}^{-1} $$</p>
@@ -1073,9 +1073,9 @@ if __name__ == '__main__':
     <link href="alyssaq.github.io/2014/view-math-equations-in-markdown-with-mathjax/"/>
     <id>alyssaq.github.io/2014/view-math-equations-in-markdown-with-mathjax/</id>
     <published>2014-02-02T11:00:00.000Z</published>
-    <updated>2015-12-13T08:28:52.000Z</updated>
-    <content type="html"><![CDATA[<p><a href="http://docs.mathjax.org/en/latest/mathjax.html" target="_blank" rel="external">MaxJax</a> is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. </p>
-<p>1) Add the MathJax script from cdn into your HTML. I use the TeX syntax but you can also use mathML by including it in the config parameter. (For scriptogr.am, its under tools &gt; HTML editor).</p>
+    <updated>2016-03-23T06:30:33.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="http://docs.mathjax.org/en/latest/mathjax.html" target="_blank" rel="external">MaxJax</a> is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers.</p>
+<p>1) Add the MathJax script from cdn into your HTML. I use the TeX syntax but you can also use mathML by including it in the config parameter. </p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&quot;&gt;&lt;/script&gt;
 </code></pre><p>2) Change the default inline math delimiters of <code>\(...\)</code> as the brackets mean something else in markdown.</p>
 <pre><code>&lt;script type=&quot;text/x-mathjax-config&quot;&gt;
@@ -1111,9 +1111,9 @@ if __name__ == '__main__':
     <link href="alyssaq.github.io/2014/view-equation-in-markdown-with-dropbox-image-hosting/"/>
     <id>alyssaq.github.io/2014/view-equation-in-markdown-with-dropbox-image-hosting/</id>
     <published>2014-02-01T11:03:00.000Z</published>
-    <updated>2015-12-13T08:28:52.000Z</updated>
+    <updated>2016-03-23T06:30:21.000Z</updated>
     <content type="html"><![CDATA[<h2 id="Goal"><a href="#Goal" class="headerlink" title="Goal"></a>Goal</h2><p>I wanted to show math equations in my github README.md</p>
-<p>Update: I now use <a href="http://scriptogr.am/alyssa/post/view-math-equations-in-markdown-with-mathjax" target="_blank" rel="external">MathJax to view math equations in markdown</a>. I use dropbox to show images in this scriptogr.am blog.</p>
+<p>Update: I now use <a href="https://alyssaq.github.io/2015/view-math-equations-in-markdown-with-mathjax">MathJax to view math equations in markdown</a>. I use dropbox to show images in this blog.</p>
 <h3 id="How_to_show_math_equations_in_the_browser"><a href="#How_to_show_math_equations_in_the_browser" class="headerlink" title="How to show math equations in the browser"></a>How to show math equations in the browser</h3><p>To do this, I was going to use <a href="http://www.w3.org/Math/mathml-faq.html" target="_blank" rel="external">MathML</a>, which<br>is an XML-based syntax for mathematical symbols to render in browsers.<br>Unfortunately,  markdown does <em>NOT</em> support MathML<br>☹</p>
 <h3 id="How_to_show_math_equations_in_markdown"><a href="#How_to_show_math_equations_in_markdown" class="headerlink" title="How to show math equations in markdown"></a>How to show math equations in markdown</h3><p>My work around was to convert the equations into images, host them somewhere and embed them in my README.md file.</p>
 <p>You will need:</p>

@@ -21,7 +21,7 @@ This mathematical technique has been used across various industries and example 
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_Vx.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_SVx.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/svd_USVx.png">
-<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
+<meta property="og:updated_time" content="2016-03-23T06:29:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Singular Value Decomposition (SVD) Visualisation">
 <meta name="twitter:description" content="“The SVD is absolutely a high point of linear algebra” (Gilbert Strang, Kai Borre)
@@ -128,12 +128,12 @@ This mathematical technique has been used across various industries and example 
       </p>
       <div class="article-entry" itemprop="articleBody">
         <p><a href="https://books.google.com.sg/books?id=MjNwWUY8jx4C&amp;pg=PA259" target="_blank" rel="external">“The SVD is absolutely a high point of linear algebra” (Gilbert Strang, Kai Borre)</a></p>
-<p>This mathematical technique has been used across various industries and example applications include <a href="http://www2.research.att.com/~volinsky/papers/ieeecomputer.pdf" target="_blank" rel="external">recommender systems (Netflix prize)</a>, <a href="http://www.iaarc.org/publications/fulltext/isarc2007-4.5_4_035.pdf" target="_blank" rel="external">face and object recognition</a>, <a href="http://www.orie.cornell.edu/engineering2/customcf/iws_events_calendar/files/Marco_Avellaneda_Presentation_10_16_14.pdf" target="_blank" rel="external">risk modelling in equity options</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/12045141" target="_blank" rel="external">identifying genes in brain imaging that make up Parkinson disease</a>. </p>
+<p>This mathematical technique has been used across various industries and example applications include <a href="http://www2.research.att.com/~volinsky/papers/ieeecomputer.pdf" target="_blank" rel="external">recommender systems (Netflix prize)</a>, <a href="http://www.iaarc.org/publications/fulltext/isarc2007-4.5_4_035.pdf" target="_blank" rel="external">face and object recognition</a>, <a href="http://www.orie.cornell.edu/engineering2/customcf/iws_events_calendar/files/Marco_Avellaneda_Presentation_10_16_14.pdf" target="_blank" rel="external">risk modelling in equity options</a> and <a href="http://www.ncbi.nlm.nih.gov/pubmed/12045141" target="_blank" rel="external">identifying genes in brain imaging that make up Parkinson disease</a>.</p>
 <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>SVD is a matrix factorisation and decomposes a matrix of any size into a  product of 3 matrices:</p>
 <p>$$ A = U S V^T $$</p>
 <p>$A$ : $n \times m$ : number of records as rows and number of dimensions/features as columns.<br>$U$ : $n \times n$ : orthogonal matrix containing eigenvectors of $AA^T$.<br>$S$ : $n \times m$ : ordered singular values in the diagonal. Square root of eigenvalues associated with $AA^T$ or $A^TA$ (its the same).<br>$V$ : $m \times m$ : orthogonal matrix containing eigenvectors of $A^TA$.</p>
 <p><em>Orthogonal matrix</em>: square matrix where columns make $90^\circ$ angles between each other and its inner dot product is zero. $Q^TQ = QQ^T = I$ and $Q^T=Q^{-1}$.<br><em>Orthonormal matrix</em>: orthogonal matrix where columns are unit vectors.</p>
-<h2 id="Example_matrix"><a href="#Example_matrix" class="headerlink" title="Example matrix"></a>Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
+<h2 id="Example_matrix"><a href="#Example_matrix" class="headerlink" title="Example matrix"></a>Example matrix</h2><p>For this post, Im going to use the same matrices from <a href="https://alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually">my post on eigenvectors and eigenvalues</a>. We have a matrix $x = \begin{bmatrix}<br>-10 &amp; -10 &amp; 20 &amp; 20\\<br>-10 &amp; 20 &amp; 20 &amp; -10<br>\end{bmatrix}$ and a transformation matrix $A = \begin{bmatrix}<br>1 &amp; 0.3 \\<br>0.45 &amp; 1.2<br>\end{bmatrix}$. In the plot below, the dashed square shows $x$ as the corners and the transformed matrix $Ax$ as the solid shape.</p>
 <p><img src="https://alyssaq.github.io/blog/images/eigens-transformation_matrix.png" alt="transformed_plot"></p>
 <p>Python’s numpy provides us with a handy <a href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.linalg.svd.html" target="_blank" rel="external"><code>svd</code></a> function:</p>
 <pre><code class="language-python">
@@ -200,7 +200,7 @@ Out[5]: True
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/singular-value-decomposition-visualisation/" data-id="cikqf7gun000hdwye1pj0zbj2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/singular-value-decomposition-visualisation/" data-id="cim4h2pkl000hmoye9s3b97lk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>

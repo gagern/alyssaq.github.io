@@ -30,7 +30,7 @@ Raw image moments
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-transformed_plot.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-moments_plot.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-three_plot.png">
-<meta property="og:updated_time" content="2015-12-13T08:28:52.000Z">
+<meta property="og:updated_time" content="2016-03-23T06:28:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computing the Axes or Orientation of a Blob">
 <meta name="twitter:description" content="How do we find the major and minor axes of a blob?We look at using 2 popular methods to obtain the same result:
@@ -145,7 +145,7 @@ Raw image moments
 <li>Covariance matrix and eigenvectors, eigenvalues (partial PCA).</li>
 <li>Raw image moments</li>
 </ol>
-<h2 id="1-_Covariance_matrix_and_eigens"><a href="#1-_Covariance_matrix_and_eigens" class="headerlink" title="1. Covariance matrix and eigens"></a>1. Covariance matrix and eigens</h2><p>An <strong>eigenvalue</strong> tells us the scaling magnitude along the direction of its corresponding <strong>eigenvector</strong>. Check my post on <a href="http://scriptogr.am/alyssa/post/understanding-eigenvectors-and-eigenvalues-visually" target="_blank" rel="external">understanding eigens</a> for the visual intuition. </p>
+<h2 id="1-_Covariance_matrix_and_eigens"><a href="#1-_Covariance_matrix_and_eigens" class="headerlink" title="1. Covariance matrix and eigens"></a>1. Covariance matrix and eigens</h2><p>An <strong>eigenvalue</strong> tells us the scaling magnitude along the direction of its corresponding <strong>eigenvector</strong>. Check my post on <a href="https://alyssaq.github.io/2015/understanding-eigenvectors-and-eigenvalues-visually">understanding eigens</a> for the visual intuition.</p>
 <p><a href="http://mathworld.wolfram.com/CovarianceMatrix.html" target="_blank" rel="external"><strong>Covariance matrix</strong></a> is a square and symmetric matrix that summarises the variance between two variables. So, with a set of $(x, y)$ points, the covariance matrix is 2x2:<br>$ C = \begin{bmatrix}<br>variance(x,x) &amp; variance(x,y) \\<br>variance(x,y) &amp; variance(y,y)<br>\end{bmatrix}$, where the variance of $(x, y)$ and $(y, x)$ are the same.</p>
 <p><strong>Principal component analysis (PCA)</strong> is a method commonly used for dimensionality reduction. The eigenvectors of the covariance matrix are called <strong>principal components</strong>. Heres a thorough <a href="http://www.cs.otago.ac.nz/cosc453/student_tutorials/principal_components.pdf" target="_blank" rel="external">tutorial on PCA and applied to computer vision (Lindsay Smith, 2002)</a>.</p>
 <p><strong>Eigenvectors with the largest eigenvalue of a covariance matrix</strong> gives us the direction along which the data has the largest variance.</p>
@@ -199,9 +199,9 @@ x_v2, y_v2 = evec2
 <p><strong>6) Plot the principal components.</strong> The larger eigenvector is plotted in red and drawn twice as long as the smaller eigenvector in blue.</p>
 <pre><code class="language-python">
 scale = 20
-plt.plot([x_v1*-scale*2, x_v1*scale*2], 
+plt.plot([x_v1*-scale*2, x_v1*scale*2],
          [y_v1*-scale*2, y_v1*scale*2], color='red')
-plt.plot([x_v2*-scale, x_v2*scale], 
+plt.plot([x_v2*-scale, x_v2*scale],
          [y_v2*-scale, y_v2*scale], color='blue')
 plt.plot(x, y, 'k.')
 plt.axis('equal')
@@ -211,14 +211,14 @@ plt.show()
 
 <p style="text-align:center"><br><img src="https://alyssaq.github.io/blog/images/blob_axes-eigens_plot.png"><br></p>
 
-<p><strong>7) Bonus!</strong> We vertically-align the blob based on the major axis via a linear transformation. An <a href="scriptogr.am/alyssa/post/visualising-matrices-and-affine-transformations-with-python#rotating">anti-clockwise rotating transformation matrix</a> has the general form: $\begin{bmatrix}<br>cos \theta &amp; -sin \theta \\<br>sin \theta &amp; cos \theta<br>\end{bmatrix}$.</p>
+<p><strong>7) Bonus!</strong> We vertically-align the blob based on the major axis via a linear transformation. An <a href="https://alyssaq.github.io/2015/visualising-matrices-and-affine-transformations-with-python#rotating">anti-clockwise rotating transformation matrix</a> has the general form: $\begin{bmatrix}<br>cos \theta &amp; -sin \theta \\<br>sin \theta &amp; cos \theta<br>\end{bmatrix}$.</p>
 <p>To do this:</p>
 <ol>
 <li>Calculate $\theta$ using the eigenvector of the major axis to the y-axis</li>
 <li>Create the rotating transformation matrix</li>
 <li>Multiply the transformation matrix to the set of coordinates.<pre><code class="language-python">
 theta = np.tanh((x_v1)/(y_v1))  
-rotation_mat = np.matrix([[np.cos(theta), -np.sin(theta)], 
+rotation_mat = np.matrix([[np.cos(theta), -np.sin(theta)],
                       [np.sin(theta), np.cos(theta)]])
 transformed_mat = rotation_mat * coords
 # plot the transformed blob
@@ -232,7 +232,7 @@ plt.plot(x_points, y_points, 'g.')
 <p style="text-align:center"><br><img src="https://alyssaq.github.io/blog/images/blob_axes-transformed_plot.png"><br></p>
 
 <h2 id="2-_Raw_image_moments"><a href="#2-_Raw_image_moments" class="headerlink" title="2. Raw image moments"></a>2. Raw image moments</h2><p>We can obtain the same axes and orientation of a blob with <a href="http://en.wikipedia.org/wiki/Image_moment#Raw_moments" target="_blank" rel="external">raw image moments and central moments</a>. Special thanks to this <a href="http://stackoverflow.com/questions/9005659/compute-eigenvectors-of-image-in-python" target="_blank" rel="external">stack overflow answer</a>.</p>
-<p>The calculation of a raw image moment is given by the equation: </p>
+<p>The calculation of a raw image moment is given by the equation:</p>
 <span>$$\begin{aligned}
 M_{ij}  = \sum\limits_{y=0}^{nrows}\sum\limits_{x=0}^{ncols} x^i \ y^j \ I(x, y)
 \end{aligned}$$</span><!-- Has MathJax -->
@@ -282,7 +282,7 @@ evals, evecs = np.linalg.eig(cov)
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/" data-id="cikqf7guq000pdwyeacybhq5x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/" data-id="cim4h2pko000pmoyeemk4dd5r" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
