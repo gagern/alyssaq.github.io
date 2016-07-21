@@ -17,7 +17,7 @@ Filtering and recommending based on information given by other users is known as
 <meta property="og:site_name" content="Alyssa">
 <meta property="og:description" content="Given a movie title, we’ll use Singular Value Decomposition (SVD) to recommend other movies based on user ratings.
 Filtering and recommending based on information given by other users is known as coll">
-<meta property="og:updated_time" content="2016-07-21T02:27:24.000Z">
+<meta property="og:updated_time" content="2016-07-21T02:34:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simple Movie Recommender Using SVD">
 <meta name="twitter:description" content="Given a movie title, we’ll use Singular Value Decomposition (SVD) to recommend other movies based on user ratings.
@@ -127,7 +127,7 @@ Filtering and recommending based on information given by other users is known as
 <p>Filtering and recommending based on information given by other users is known as <a href="http://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">collaborative filtering</a>. The assumption is that people with similar movie tastes are most likely to give similar movie ratings. So, if I’m looking for a new movie and I’ve watched The Matrix, this method will recommend movies that have a similar rating pattern to The Matrix across a set of users.</p>
 <h2 id="SVD_Concept"><a href="#SVD_Concept" class="headerlink" title="SVD Concept"></a>SVD Concept</h2><p>The essence of SVD is that it decomposes a matrix of any shape into a product of 3 matrices with nice mathematical properties: $A = U S V^T$. </p>
 <p>By lucid analogy, a number can decompose into 3 numbers to always have the smallest prime in the middle. E.g $24 = 3 \times 2 \times 4$ or $57 = 1 \times 3 \times 19$.</p>
-<p>For the interested, I previously wrote a post on <a href="http://scriptogr.am/alyssa/post/singular-value-decomposition-svd-visualisation" target="_blank" rel="external">SVD visualisation</a> to view the properties of the decomposition.</p>
+<p>For the interested, I previously wrote a post on <a href="https://alyssaq.github.io/2015/singular-value-decomposition-visualisation">SVD visualisation</a> to view the properties of the decomposition.</p>
 <p>The result of the decomposition leaves us with an ordered matrix of singular values which encompass the variance associated with every direction. We assume that larger variances means less redundancy and less correlation and encode more structure about the data. This allows us to use a representative subset of user rating directions or principal components to recommend movies.</p>
 <p>I highly recommend reading <a href="http://arxiv.org/pdf/1404.1100.pdf" target="_blank" rel="external">John Shlen’s tutorial on PCA and SVD (2014)</a> to fully understand the mathematical properties of the  two related methods.</p>
 <h2 id="Simple_Recommender"><a href="#Simple_Recommender" class="headerlink" title="Simple Recommender"></a>Simple Recommender</h2><p>Python libraries we’ll be using:</p>
@@ -247,7 +247,7 @@ Tarzan (1999)
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/" data-id="ciqvpab89000622yemevzfjjb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/" data-id="ciqvpg8c0000662ye8tpdz7p5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
