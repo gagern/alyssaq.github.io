@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Alyssa Quek]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="alyssaq.github.io/"/>
-  <updated>2016-07-21T02:34:07.000Z</updated>
+  <updated>2016-07-21T02:50:08.000Z</updated>
   <id>alyssaq.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/"/>
     <id>alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/</id>
     <published>2015-04-26T06:13:00.000Z</published>
-    <updated>2016-07-21T02:34:07.000Z</updated>
+    <updated>2016-07-21T02:50:08.000Z</updated>
     <content type="html"><![CDATA[<p>Given a movie title, we’ll use <a href="http://mathworld.wolfram.com/SingularValueDecomposition.html" target="_blank" rel="external">Singular Value Decomposition (SVD)</a> to recommend other movies based on user ratings.</p>
 <p>Filtering and recommending based on information given by other users is known as <a href="http://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">collaborative filtering</a>. The assumption is that people with similar movie tastes are most likely to give similar movie ratings. So, if I’m looking for a new movie and I’ve watched The Matrix, this method will recommend movies that have a similar rating pattern to The Matrix across a set of users.</p>
 <h2 id="SVD_Concept"><a href="#SVD_Concept" class="headerlink" title="SVD Concept"></a>SVD Concept</h2><p>The essence of SVD is that it decomposes a matrix of any shape into a product of 3 matrices with nice mathematical properties: $A = U S V^T$. </p>
@@ -74,7 +74,7 @@ def top_cosine_similarity(data, movie_id, top_n=10):
     return sort_indexes[:top_n]
 
 # Helper function to print top N similar movies
-def print_similar_movies(movie_data, top_indexes):
+def print_similar_movies(movie_data, movie_id, top_indexes):
     print('Recommendations for {0}: \n'.format(
     movie_data[movie_data.movie_id == movie_id].title.values[0]))
     for id in top_indexes + 1:
@@ -120,7 +120,7 @@ top_n = 10
 
 sliced = evecs[:, :k] # representative data
 top_indexes = top_cosine_similarity(sliced, movie_id, top_n)
-print_similar_movies(movie_data, top_indexes)
+print_similar_movies(movie_data, movie_id, top_indexes)
 </code></pre>
 
 <pre><code>Recommendations for Toy Story (1995): 

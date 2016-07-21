@@ -17,7 +17,7 @@ Filtering and recommending based on information given by other users is known as
 <meta property="og:site_name" content="Alyssa">
 <meta property="og:description" content="Given a movie title, we’ll use Singular Value Decomposition (SVD) to recommend other movies based on user ratings.
 Filtering and recommending based on information given by other users is known as coll">
-<meta property="og:updated_time" content="2016-07-21T02:34:07.000Z">
+<meta property="og:updated_time" content="2016-07-21T02:50:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Simple Movie Recommender Using SVD">
 <meta name="twitter:description" content="Given a movie title, we’ll use Singular Value Decomposition (SVD) to recommend other movies based on user ratings.
@@ -177,7 +177,7 @@ def top_cosine_similarity(data, movie_id, top_n=10):
     return sort_indexes[:top_n]
 
 # Helper function to print top N similar movies
-def print_similar_movies(movie_data, top_indexes):
+def print_similar_movies(movie_data, movie_id, top_indexes):
     print('Recommendations for {0}: \n'.format(
     movie_data[movie_data.movie_id == movie_id].title.values[0]))
     for id in top_indexes + 1:
@@ -223,7 +223,7 @@ top_n = 10
 
 sliced = evecs[:, :k] # representative data
 top_indexes = top_cosine_similarity(sliced, movie_id, top_n)
-print_similar_movies(movie_data, top_indexes)
+print_similar_movies(movie_data, movie_id, top_indexes)
 </code></pre>
 
 <pre><code>Recommendations for Toy Story (1995): 
@@ -247,7 +247,7 @@ Tarzan (1999)
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/" data-id="ciqvpg8c0000662ye8tpdz7p5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/" data-id="ciqvq0rb80006heye6t9k555k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
