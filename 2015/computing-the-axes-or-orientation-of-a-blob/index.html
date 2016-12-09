@@ -30,7 +30,7 @@ Raw image moments
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-transformed_plot.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-moments_plot.png">
 <meta property="og:image" content="https://alyssaq.github.io/blog/images/blob_axes-three_plot.png">
-<meta property="og:updated_time" content="2016-03-23T06:28:49.000Z">
+<meta property="og:updated_time" content="2016-12-09T11:44:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Computing the Axes or Orientation of a Blob">
 <meta name="twitter:description" content="How do we find the major and minor axes of a blob?We look at using 2 popular methods to obtain the same result:
@@ -223,7 +223,7 @@ rotation_mat = np.matrix([[np.cos(theta), -np.sin(theta)],
 transformed_mat = rotation_mat * coords
 # plot the transformed blob
 x_transformed, y_transformed = transformed_mat.A
-plt.plot(x_points, y_points, 'g.')
+plt.plot(x_transformed, y_transformed, 'g.')
 </code></pre>
 
 </li>
@@ -236,11 +236,6 @@ plt.plot(x_points, y_points, 'g.')
 <span>$$\begin{aligned}
 M_{ij}  = \sum\limits_{y=0}^{nrows}\sum\limits_{x=0}^{ncols} x^i \ y^j \ I(x, y)
 \end{aligned}$$</span><!-- Has MathJax -->
-  <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({   tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}, processEscapes: true });
-  </script>
-
 <p>where $x$ and $y$ are indices to the data and $I(x, y)$ is the grey-level intensity value at that index. The codification of that equation:</p>
 <pre><code class="language-python">
 def raw_moment(data, i_order, j_order):
@@ -282,7 +277,7 @@ evals, evecs = np.linalg.eig(cov)
 
       </div>
       <footer class="article-footer">
-        <a data-url="alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/" data-id="ciqvq0rbn000uheyey2mp39da" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+        <a data-url="alyssaq.github.io/2015/computing-the-axes-or-orientation-of-a-blob/" data-id="ciwhq9fbm000u6gifebyk8v1w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
         
         
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-vision/">computer vision</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linear-algebra/">linear algebra</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
