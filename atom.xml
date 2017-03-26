@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Alyssa Quek]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="alyssaq.github.io/"/>
-  <updated>2016-07-21T02:51:41.000Z</updated>
+  <updated>2017-03-26T03:40:43.000Z</updated>
   <id>alyssaq.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/"/>
     <id>alyssaq.github.io/2015/20150426-simple-movie-recommender-using-svd/</id>
     <published>2015-04-26T06:13:00.000Z</published>
-    <updated>2016-07-21T02:51:41.000Z</updated>
+    <updated>2017-03-26T03:40:43.000Z</updated>
     <content type="html"><![CDATA[<p>Given a movie title, we’ll use <a href="http://mathworld.wolfram.com/SingularValueDecomposition.html" target="_blank" rel="external">Singular Value Decomposition (SVD)</a> to recommend other movies based on user ratings.</p>
 <p>Filtering and recommending based on information given by other users is known as <a href="http://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">collaborative filtering</a>. The assumption is that people with similar movie tastes are most likely to give similar movie ratings. So, if I’m looking for a new movie and I’ve watched The Matrix, this method will recommend movies that have a similar rating pattern to The Matrix across a set of users.</p>
 <h2 id="SVD_Concept"><a href="#SVD_Concept" class="headerlink" title="SVD Concept"></a>SVD Concept</h2><p>The essence of SVD is that it decomposes a matrix of any shape into a product of 3 matrices with nice mathematical properties: $A = U S V^T$. </p>
@@ -138,7 +138,7 @@ Tarzan (1999)
 </code></pre><p>Exactly the same results!<br>In step 4 above, our input matrix $A$ has shape $u \times m$. The computation of <code>V</code> from SVD is the result of the eigenvectors of $A^T A$. The columns of <code>V</code> are the eigenvectors that correspond to the sorted eigenvalues in the diagonal of $S$. </p>
 <p>By construction, $A^T A$ equals the covariance matrix of <code>normalised_mat</code>. Thus, the columns of $V$ are the principal components of <code>normalised_mat</code>. (Refer to section VI of <a href="http://arxiv.org/pdf/1404.1100.pdf" target="_blank" rel="external">John Shlen’s tutorial (2014)</a> for the full mathematical proof of this relationship).</p>
 <h3 id="Why_use_SVD_over_the_covariance_matrix_3F"><a href="#Why_use_SVD_over_the_covariance_matrix_3F" class="headerlink" title="Why use SVD over the covariance matrix?"></a>Why use SVD over the covariance matrix?</h3><ul>
-<li>Its faster (Facebook published a <a href="https://research.facebook.com/blog/294071574113354/fast-randomized-svd" target="_blank" rel="external">fast randomized SVD</a>)</li>
+<li>Its faster (Facebook published a <a href="https://research.fb.com/fast-randomized-svd/" target="_blank" rel="external">fast randomized SVD</a>)</li>
 <li>Singular values from SVD are sorted (we have to sort the eigenvalues in ascending order)</li>
 </ul>
 ]]></content>
